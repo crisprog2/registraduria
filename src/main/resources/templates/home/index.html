@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header th:replace="layout/layout :: header"></header>
+    <div class="container py-4">
+
+        <form th:action="@{/home/index}" method="post">
+            <div align="center">
+                <label class="col-sm-2 col-form-label">Cedula Votante</label> <input
+                    type="number" name="cedula" class="form-control col-sm-2" value="0" />
+                <br> <input class="form-control col-sm-2" type="submit"
+                            value="Enviar" />
+            </div>
+        </form>
+        <br>
+        <div th:if="${consulta.primerNombre!=null}">
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        <label>Primer Nombre</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.primerNombre}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Segundo Nombre</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.segundoNombre}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Primer Apellido</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.primerApellido}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Segundo Apellido</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.segundoApellido}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Cedula</label>
+
+                        <input type="number" class="form-control"
+                               th:value="${consulta.cedulaVotante}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Edad</label>
+
+                        <input type="number" class="form-control"
+                               th:value="${consulta.edadVotante}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Jurado</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.jurado}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Mesa</label>
+
+                        <input type="number" class="form-control"
+                               th:value="${consulta.mesaVoto}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Dirección Voto</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.direccionVoto}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Ciudad</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.ciudadVoto}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                    <td>
+                        <label>Departamento</label>
+
+                        <input type="text" class="form-control"
+                               th:value="${consulta.departamentoVoto}" contenteditable="false"
+                               disabled="disabled" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
