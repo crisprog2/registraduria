@@ -3,7 +3,7 @@ package com.spring.mvc.registraduria.model.entity.dto;
 import java.io.Serializable;
 
 /**
- * @author User
+ * @author Christian Chacon
  */
 public class ConsultaDto implements Serializable {
 
