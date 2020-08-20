@@ -15,9 +15,11 @@ public class ConsultaDto implements Serializable {
     private int edadVotante;
     private String jurado;
     private int mesaVoto;
-    private String direccionVoto;
+    private String lugarVoto;
     private String ciudadVoto;
     private String departamentoVoto;
+    private Double lat;
+    private Double lng;
 
     public String getPrimerNombre() {
         return primerNombre;
@@ -99,11 +101,27 @@ public class ConsultaDto implements Serializable {
         this.mesaVoto = mesaVoto;
     }
 
-    public String getDireccionVoto() {
-        return direccionVoto;
+    public String getLugarVoto() {
+        return lugarVoto;
     }
 
-    public void setDireccionVoto(String direccionVoto) {
-        this.direccionVoto = direccionVoto;
+    public void setLugarVoto(String lugarVoto) {
+        this.lugarVoto = lugarVoto;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 }

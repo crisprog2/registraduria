@@ -1,13 +1,22 @@
 package com.spring.mvc.registraduria.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.mvc.registraduria.model.entity.*;
 import com.spring.mvc.registraduria.model.entity.dto.ConsultaDto;
+import com.spring.mvc.registraduria.model.entity.dto.responseGoogleMapsGeocode.Geocode;
+import com.spring.mvc.registraduria.model.entity.dto.responseGoogleMapsGeocode.Result;
 import com.spring.mvc.registraduria.model.entity.service.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 
 /**
  * @author Christian Chacon
@@ -20,6 +29,9 @@ public class HomeController {
     @Autowired
     private IPersonaService personaService;
 
+    @Autowired
+    RestTemplate restTemplate;
+
     @GetMapping(value= {"","/","/index"})
     public String index(Model model) {
         ConsultaDto consultaDto=new ConsultaDto();
@@ -28,7 +40,7 @@ public class HomeController {
     }
 
     @PostMapping(value = "/index")
-    public String consulta(Model model, @RequestParam(name = "cedula") int cedula){
+    public String consulta(Model model, @RequestParam(name = "cedula") int cedula) throws JsonProcessingException {
         ConsultaDto consultaDto=new ConsultaDto();
         TablaPersona persona=personaService.findOne(cedula);
         if(persona==null){
@@ -50,10 +62,17 @@ public class HomeController {
                 persona.getJurado().equals("No es Jurado");
             }
             consultaDto.setMesaVoto(tablaMesa.getMesa());
-            consultaDto.setDireccionVoto(tablaLugarVoto.getDireccionVoto());
+            consultaDto.setLugarVoto(tablaLugarVoto.getNombreLugar());
             consultaDto.setCiudadVoto(tablaCiudad.getCiudad());
             consultaDto.setDepartamentoVoto(tablaDepartamento.getDepartamento());
+            RestTemplate restTemplate = new RestTemplate();
+            String fooResourceUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+tablaLugarVoto.getNombreLugar()+", "+consultaDto.getCiudadVoto()+"&key=AIzaSyBP9BzaVQMLVAX5HaJOcOvYVkeoTMmv0CQ";
+            Geocode geocode=restTemplate.getForObject(fooResourceUrl, Geocode.class);
+            Result result=geocode.getResults().get(0);
+            consultaDto.setLat(result.getGeometry().getViewport().getNortheast().getLat());
+            consultaDto.setLng(result.getGeometry().getViewport().getNortheast().getLng());
             model.addAttribute("consulta", consultaDto);
+
             return "redirect:/home/ver";
         }
     }

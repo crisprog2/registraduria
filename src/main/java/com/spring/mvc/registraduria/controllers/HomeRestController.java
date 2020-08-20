@@ -49,7 +49,7 @@ public class HomeRestController {
                 persona.getJurado().equals("No es Jurado");
             }
             consultaDto.setMesaVoto(tablaMesa.getMesa());
-            consultaDto.setDireccionVoto(tablaLugarVoto.getDireccionVoto());
+            consultaDto.setLugarVoto(tablaLugarVoto.getDireccionVoto());
             consultaDto.setCiudadVoto(tablaCiudad.getCiudad());
             consultaDto.setDepartamentoVoto(tablaDepartamento.getDepartamento());
             return consultaDto;
