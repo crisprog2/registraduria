@@ -21,5 +21,7 @@ public interface IPersonaService {
 	public TablaPersona findOne(Integer cedula);
 
 	public void delete(Integer cedula);
+
+	public List<Object[]> obtenerPersonas();
 	
 }

@@ -46,4 +46,9 @@ public class PersonaServiceImpl implements IPersonaService {
 		personaDao.deleteById(cedula);
 	}
 
+	@Override
+	public List<Object[]> obtenerPersonas() {
+		return personaDao.obtenerPersonas();
+	}
+
 }

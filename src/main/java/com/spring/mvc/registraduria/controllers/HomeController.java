@@ -8,6 +8,7 @@ import com.spring.mvc.registraduria.model.entity.dto.ConsultaDto;
 import com.spring.mvc.registraduria.model.entity.dto.responseGoogleMapsGeocode.Geocode;
 import com.spring.mvc.registraduria.model.entity.dto.responseGoogleMapsGeocode.Result;
 import com.spring.mvc.registraduria.model.entity.service.IPersonaService;
+import com.spring.mvc.registraduria.model.entity.service.IRegistroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ public class HomeController {
 
     @Autowired
     private IPersonaService personaService;
+
+    @Autowired
+    private IRegistroService registroService;
 
     @Autowired
     RestTemplate restTemplate;
@@ -71,8 +75,10 @@ public class HomeController {
             Result result=geocode.getResults().get(0);
             consultaDto.setLat(result.getGeometry().getViewport().getNortheast().getLat());
             consultaDto.setLng(result.getGeometry().getViewport().getNortheast().getLng());
+            TablaRegistro registro= persona.getRegistro();
+            registro.setRegistro(registro.getRegistro()+1);
+            registroService.save(registro);
             model.addAttribute("consulta", consultaDto);
-
             return "redirect:/home/ver";
         }
     }
