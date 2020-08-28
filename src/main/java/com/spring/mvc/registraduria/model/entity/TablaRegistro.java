@@ -3,6 +3,8 @@
  */
 package com.spring.mvc.registraduria.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -38,6 +40,7 @@ public class TablaRegistro implements Serializable {
 	
 	@OneToOne
     @JoinColumn(name = "cedula", updatable = false, nullable = false)
+	@JsonBackReference
     private TablaPersona persona;
 
 	/**

@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * @author User
@@ -56,6 +57,7 @@ public class TablaPersona implements Serializable {
 	private String jurado;
 	
 	@OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private TablaRegistro registro;
 
 	@JoinColumn(name = "cod_Mesa", referencedColumnName = "cod_Mesa")

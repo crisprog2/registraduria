@@ -1,8 +1,6 @@
 package com.spring.mvc.registraduria.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.mvc.registraduria.model.entity.*;
 import com.spring.mvc.registraduria.model.entity.dto.ConsultaDto;
 import com.spring.mvc.registraduria.model.entity.dto.responseGoogleMapsGeocode.Geocode;
@@ -10,7 +8,6 @@ import com.spring.mvc.registraduria.model.entity.dto.responseGoogleMapsGeocode.R
 import com.spring.mvc.registraduria.model.entity.service.IPersonaService;
 import com.spring.mvc.registraduria.model.entity.service.IRegistroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
