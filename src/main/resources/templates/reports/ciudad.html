@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+<h1>Reportes</h1>
+    <div id="chart_div"></div>
+    <div id="piechart" style="width: 1024px; height: 500px;"></div>
+    <script th:inline="javascript">
+        var real_data = /*[[${chartData}]]*/'noValue';
+
+        $(document).ready(function() {
+            google.charts.load('current', {
+                packages : [ 'corechart', 'bar' ]
+            });
+            google.charts.setOnLoadCallback(drawColumnChart);
+            google.charts.setOnLoadCallback(drawPieChart);
+        });
+
+        function drawColumnChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Ciudad');
+            data.addColumn('number', 'Consultas');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : 'Numero de Consultas por Ciudad',
+                hAxis : {
+                    title : 'Ciudad',
+                },
+                vAxis : {
+                    title : 'Consultas'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document
+                    .getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
+        function drawPieChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Ciudad');
+            data.addColumn('number', 'Consultas');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : 'Blog stats'
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
