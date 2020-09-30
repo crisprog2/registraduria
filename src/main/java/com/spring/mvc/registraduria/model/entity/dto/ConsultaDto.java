@@ -7,6 +7,10 @@ import java.io.Serializable;
  */
 public class ConsultaDto implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
