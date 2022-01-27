@@ -11,10 +11,13 @@ insert into tabla_ciudad (cod_Ciudad, ciudad, cod_Departamento) VALUES ('C004', 
 insert into tabla_ciudad (cod_Ciudad, ciudad, cod_Departamento) VALUES ('C005', 'Sogamoso', 'D003');
 
 insert into tabla_lugar (cod_lugar, nombre_lugar, direccion, cod_Ciudad) VALUES ('L001', 'Plaza Imperial', 'Cra. 104 #148 - 07', 'C001');
+insert into tabla_lugar (cod_lugar, nombre_lugar, direccion, cod_Ciudad) VALUES ('L002', 'Universidad de Antioquia', 'Cl. 67 #53-108', 'C003');
 
 insert into tabla_mesa (mesa, cod_lugar) VALUES (301, 'L001');
+insert into tabla_mesa (mesa, cod_lugar) VALUES (306, 'L002');
 
 insert into tabla_persona (cedula, primer_Nombre, segundo_Nombre, primer_Apellido, segundo_Apellido, genero, edad, jurado, cod_Mesa) VALUES (1100958834, 'Christian', 'Romario', 'Chacon', 'Pinzon', 'M', 29, 'Y', '1');
-insert into tabla_persona (cedula, primer_Nombre, segundo_Nombre, primer_Apellido, segundo_Apellido, genero, edad, jurado, cod_Mesa) VALUES (1100958835, 'Juan', 'Camilo', 'Chacon', 'Pinzon', 'M', 27, 'N', '1');
+insert into tabla_persona (cedula, primer_Nombre, segundo_Nombre, primer_Apellido, segundo_Apellido, genero, edad, jurado, cod_Mesa) VALUES (1100958835, 'Juan', 'Camilo', 'Chacon', 'Pinzon', 'M', 27, 'N', '2');
 
 insert into tabla_registro (registro, cedula) VALUES (0, 1100958834);
+insert into tabla_registro (registro, cedula) VALUES (0, 1100958835);
