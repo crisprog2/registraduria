@@ -23,25 +23,21 @@ public class CiudadServiceImpl implements ICiudadService {
 
 	@Override
 	public List<TablaCiudad> findAll() {
-		// TODO Auto-generated method stub
 		return (List<TablaCiudad>) ciudadDao.findAll();
 	}
 
 	@Override
 	public void save(TablaCiudad ciudad) {
-		// TODO Auto-generated method stub
 		ciudadDao.save(ciudad);
 	}
 
 	@Override
 	public TablaCiudad findOne(String codCiudad) {
-		// TODO Auto-generated method stub
 		return ciudadDao.findById(codCiudad).orElse(null);
 	}
 
 	@Override
 	public void delete(String codCiudad) {
-		// TODO Auto-generated method stub
 		ciudadDao.deleteById(codCiudad);
 	}
 

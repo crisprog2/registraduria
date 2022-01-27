@@ -24,25 +24,21 @@ public class RegistroServiceImpl implements IRegistroService {
 
 	@Override
 	public List<TablaRegistro> findAll() {
-		// TODO Auto-generated method stub
 		return (List<TablaRegistro>) registroDao.findAll();
 	}
 
 	@Override
 	public void save(TablaRegistro registro) {
-		// TODO Auto-generated method stub
 		registroDao.save(registro);
 	}
 
 	@Override
 	public TablaRegistro findOne(Long codRegistro) {
-		// TODO Auto-generated method stub
 		return registroDao.findById(codRegistro).orElse(null);
 	}
 
 	@Override
 	public void delete(Long codRegistro) {
-		// TODO Auto-generated method stub
 		registroDao.deleteById(codRegistro);
 	}
 

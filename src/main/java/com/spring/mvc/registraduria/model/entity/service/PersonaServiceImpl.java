@@ -24,25 +24,21 @@ public class PersonaServiceImpl implements IPersonaService {
 
 	@Override
 	public List<TablaPersona> findAll() {
-		// TODO Auto-generated method stub
 		return (List<TablaPersona>) personaDao.findAll();
 	}
 
 	@Override
 	public void save(TablaPersona persona) {
-		// TODO Auto-generated method stub
 		personaDao.save(persona);
 	}
 
 	@Override
 	public TablaPersona findOne(Integer cedula) {
-		// TODO Auto-generated method stub
 		return personaDao.findById(cedula).orElse(null);
 	}
 
 	@Override
 	public void delete(Integer cedula) {
-		// TODO Auto-generated method stub
 		personaDao.deleteById(cedula);
 	}
 

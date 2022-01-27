@@ -24,25 +24,21 @@ public class MesaServiceImpl implements IMesaService {
 
 	@Override
 	public List<TablaMesa> findAll() {
-		// TODO Auto-generated method stub
 		return (List<TablaMesa>) mesaDao.findAll();
 	}
 
 	@Override
 	public void save(TablaMesa mesa) {
-		// TODO Auto-generated method stub
 		mesaDao.save(mesa);
 	}
 
 	@Override
 	public TablaMesa findOne(Long codMesa) {
-		// TODO Auto-generated method stub
 		return mesaDao.findById(codMesa).orElse(null);
 	}
 
 	@Override
 	public void delete(Long codMesa) {
-		// TODO Auto-generated method stub
 		mesaDao.deleteById(codMesa);
 	}
 

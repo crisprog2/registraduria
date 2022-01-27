@@ -23,25 +23,21 @@ public class DepartamentoServiceImpl implements IDepartamentoService {
 	
 	@Override
 	public List<TablaDepartamento> findAll() {
-		// TODO Auto-generated method stub
 		return (List<TablaDepartamento>) departamentoDao.findAll();
 	}
 
 	@Override
 	public void save(TablaDepartamento departamento) {
-		// TODO Auto-generated method stub
 		departamentoDao.save(departamento);
 	}
 
 	@Override
 	public TablaDepartamento findOne(String codDepartamento) {
-		// TODO Auto-generated method stub
 		return departamentoDao.findById(codDepartamento).orElse(null);
 	}
 
 	@Override
 	public void delete(String codDepartamento) {
-		// TODO Auto-generated method stub
 		departamentoDao.deleteById(codDepartamento);
 	}
 	
